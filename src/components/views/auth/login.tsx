@@ -40,7 +40,7 @@ const Login = () => {
   }
 
   return (
-    <AuthLayout error={error} link="/auth/register" title="Sign In" linkText="Don't have an account? " alertOnClick={() => setError('')}>
+    <AuthLayout error={error} link="/auth/register" title="Sign In" linkText="Don't have an account? " linkTitle="Sign Up" alertOnClick={() => setError('')}>
       <form onSubmit={handleSubmit} className="space-y-5">
         <Input labelFor="email" labelName="Email" name="email" id="email" type="email" autoComplete="on" />
         <Input labelFor="password" labelName="Password" name="password" id="password" type="password" />

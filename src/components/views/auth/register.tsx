@@ -35,7 +35,7 @@ const Register = () => {
   }
 
   return (
-    <AuthLayout error={error} link="/auth/login" linkText="Already have an account?" title="Sign Up" alertOnClick={() => setError('')}>
+    <AuthLayout error={error} link="/auth/login" linkText="Already have an account?" linkTitle="Sign In" title="Sign Up" alertOnClick={() => setError('')}>
       <form onSubmit={handleSubmit} className="space-y-5">
         <Input labelFor="fullname" labelName="Name" name="fullname" id="fullname" type="text" />
         <Input labelFor="email" labelName="Email" name="email" id="email" type="email" autoComplete="on" />

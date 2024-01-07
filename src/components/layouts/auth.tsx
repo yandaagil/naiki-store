@@ -8,10 +8,11 @@ type AuthLayoutProps = {
   children: React.ReactNode
   link: string
   linkText?: string
+  linkTitle?: string
   alertOnClick: () => void
 }
 
-const AuthLayout = ({ error, title, children, link, linkText, alertOnClick }: AuthLayoutProps) => {
+const AuthLayout = ({ error, title, children, link, linkText, linkTitle, alertOnClick }: AuthLayoutProps) => {
   return (
     <div className="mx-auto w-96 space-y-7">
       <h1 className="text-center font-bold text-2xl">{title}</h1>
@@ -25,7 +26,7 @@ const AuthLayout = ({ error, title, children, link, linkText, alertOnClick }: Au
         </div>
       }
       {children}
-      <p className="text-center">{linkText} <Link href={link} className="link link-primary">{title}</Link></p>
+      <p className="text-center">{linkText} <Link href={link} className="link link-primary">{linkTitle}</Link></p>
     </div>
   )
 }
