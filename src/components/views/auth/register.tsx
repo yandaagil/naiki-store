@@ -1,3 +1,4 @@
+import Input from "@/components/ui/input"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { FormEvent, useState } from "react"
@@ -50,20 +51,11 @@ const Register = () => {
         </div>
       }
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="fullname">Name</label>
-          <input type="text" name="fullname" id="fullname" className="input input-bordered w-full" />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" autoComplete="on" className="input input-bordered w-full" />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" className="input input-bordered w-full" />
-        </div>
+        <Input labelFor="fullname" labelName="Name" name="fullname" id="fullname" type="text" />
+        <Input labelFor="email" labelName="Email" name="email" id="email" type="email" autoComplete="on" />
+        <Input labelFor="password" labelName="Password" name="password" id="password" type="password" />
         {isLoading ? (
-          <button className="btn btn-neutral btn-block">
+          <button className="btn btn-disabled btn-block">
             <span className="loading loading-spinner"></span>
             Loading
           </button>

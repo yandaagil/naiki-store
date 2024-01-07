@@ -1,3 +1,4 @@
+import Input from "@/components/ui/input"
 import { signIn } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -50,14 +51,8 @@ const Login = () => {
         </div>
       }
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" autoComplete="on" className="input input-bordered w-full" />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" className="input input-bordered w-full" />
-        </div>
+        <Input labelFor="email" labelName="Email" name="email" id="email" type="email" autoComplete="on" />
+        <Input labelFor="password" labelName="Password" name="password" id="password" type="password" />
         {isLoading ? (
           <button className="btn btn-neutral btn-block">
             <span className="loading loading-spinner"></span>
