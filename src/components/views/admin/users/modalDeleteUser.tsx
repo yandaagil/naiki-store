@@ -2,16 +2,18 @@ import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Modal from '@/components/ui/modal'
 import userServices from '@/services/user'
+import { useSession } from 'next-auth/react'
 import { FormEvent, useState } from 'react'
 
 const ModalDeleteUser = ({ id, deletedUser, setUsersData }: any) => {
+  const session: any = useSession()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleDeleteUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
 
-    const result = await userServices.deleteUser(deletedUser.id)
+    const result = await userServices.deleteUser(deletedUser.id, session.data?.accessToken)
 
     if (result.status === 200) {
       setIsLoading(false)
