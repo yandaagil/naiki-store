@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../sidebar'
-import { LayoutDashboard, Package } from 'lucide-react'
+import { LayoutDashboard, Package, Users } from 'lucide-react'
 
 type AdminLayoutProps = {
   children: React.ReactNode
@@ -10,12 +10,17 @@ const listSidebarItem = [
   {
     title: "Dashboard",
     url: "/admin",
-    icon: <LayoutDashboard size={20} />
+    icon: <LayoutDashboard size={16} />
   },
   {
     title: "Products",
     url: "/admin/products",
-    icon: <Package size={20} />
+    icon: <Package size={16} />
+  },
+  {
+    title: "Users",
+    url: "/admin/users",
+    icon: <Users size={16} />
   }
 ]
 
@@ -23,7 +28,9 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
     <div className='flex flex-row'>
       <Sidebar lists={listSidebarItem} />
-      {children}
+      <div className='py-5 px-7 space-y-5'>
+        {children}
+      </div>
     </div>
   )
 }

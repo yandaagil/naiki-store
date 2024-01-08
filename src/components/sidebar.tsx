@@ -18,7 +18,7 @@ const Sidebar = ({ lists }: SidebarProps) => {
   return (
     <ul className="menu bg-base-200 w-56 justify-between">
       <div>
-        <h2 className="menu-title">Title</h2>
+        <h2 className="mb-3 px-4 py-2 font-bold text-lg text-center">Admin Panel</h2>
         {lists.map((list, index) => (
           <li key={index} className={`${pathname === list.url && 'btn-active rounded-lg'}`}>
             <Link href={list.url}>
