@@ -27,7 +27,7 @@ const listSidebarItem = [
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
     <div className='flex flex-row'>
-      <Sidebar lists={listSidebarItem} />
+      <Sidebar title='Admin' lists={listSidebarItem} />
       <div className='py-5 px-7 space-y-5'>
         {children}
       </div>

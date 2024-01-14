@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const disableNavbar = ['auth', 'admin']
+const disableNavbar = ['auth', 'admin', 'member']
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const { pathname } = useRouter()

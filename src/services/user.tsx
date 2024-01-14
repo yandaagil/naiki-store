@@ -7,6 +7,9 @@ const userServices = {
   }),
   deleteUser: (id: string, token: string) => instance.delete(`/api/user/${id}`, {
     headers: { 'Authorization': `Bearer ${token}` }
+  }),
+  getProfile: (token: string) => instance.get('/api/user/profile', {
+    headers: { 'Authorization': `Bearer ${token}` }
   })
 }
 

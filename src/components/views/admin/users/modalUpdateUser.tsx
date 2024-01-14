@@ -37,8 +37,8 @@ const ModalUpdateUser = ({ id, updatedUser, setUsersData }: any) => {
   return (
     <Modal id={id} title="Update User">
       <form className="space-y-3" onSubmit={handleUpdateUser}>
-        <Input type='text' id='fullname' labelFor='fullname' labelName='Fullname' name='fullname' defaultValue={updatedUser.fullname} disabled />
-        <Input type='text' id='email' labelFor='email' labelName='Email' name='email' defaultValue={updatedUser.email} disabled />
+        <Input className='input input-bordered' type='text' id='fullname' labelFor='fullname' labelName='Fullname' name='fullname' defaultValue={updatedUser.fullname} disabled />
+        <Input className='input input-bordered' type='text' id='email' labelFor='email' labelName='Email' name='email' defaultValue={updatedUser.email} disabled />
         <Select
           labelFor='role'
           labelName='Role'

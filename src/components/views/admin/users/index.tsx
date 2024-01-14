@@ -3,7 +3,6 @@ import Button from '@/components/ui/button'
 import { useEffect, useState } from 'react'
 import ModalUpdateUser from './modalUpdateUser'
 import { Pencil, Trash } from 'lucide-react'
-import userServices from '@/services/user'
 import ModalDeleteUser from './modalDeleteUser'
 
 type AdminUsersViewProps = {
