@@ -9,6 +9,7 @@ export async function signUp(
     role: string;
     createdAt?: Date;
     updatedAt?: Date;
+    image?: string;
   },
   callback: Function
 ) {
@@ -19,6 +20,7 @@ export async function signUp(
   } else {
     if (!userData.role) userData.role = "member";
 
+    userData.image = ''
     userData.password = await bcrypt.hash(userData.password, 10);
     userData.createdAt = new Date()
     userData.updatedAt = new Date()

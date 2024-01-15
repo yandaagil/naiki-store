@@ -47,6 +47,7 @@ const authOptions: NextAuthOptions = {
         token.email = user.email;
         token.role = user.role;
         token.id = user.id;
+        token.image = user.image;
       }
 
       if (account?.provider === "google") {

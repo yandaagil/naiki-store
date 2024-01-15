@@ -8,16 +8,18 @@ const MemberProfilePage = () => {
   const session: any = useSession()
 
   useEffect(() => {
-    const getUserProfile = async () => {
-      const { data } = await userServices.getProfile(session.data?.accessToken)
-      setProfile(data.data)
+    if (session.data?.accessToken && Object.keys(profile).length === 0) {
+      const getProfile = async () => {
+        const { data } = await userServices.getProfile(session.data?.accessToken)
+        setProfile(data.data)
+      }
+      getProfile()
     }
-    getUserProfile()
-  }, [session])
+  }, [profile, session])
 
   return (
     <main className="flex min-h-screen">
-      <MemberProfileView profile={profile} />
+      <MemberProfileView profile={profile} setProfile={setProfile} session={session} />
     </main>
   )
 }
