@@ -4,15 +4,14 @@ import Input from "@/components/ui/input"
 import authServices from "@/services/auth"
 import { useRouter } from "next/router"
 import { FormEvent, useState } from "react"
+import { toast } from "sonner"
 
 const Register = () => {
   const { push } = useRouter()
-  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setError('')
     setIsLoading(true)
     const form = e.target as HTMLFormElement
 
@@ -22,20 +21,26 @@ const Register = () => {
       password: form.password.value,
     }
 
-    const result = await authServices.registerAccount(data)
+    try {
+      const result = await authServices.registerAccount(data)
 
-    if (result.status === 200) {
-      form.reset()
+      if (result.status === 200) {
+        form.reset()
+        setIsLoading(false)
+        toast.success('Register success!')
+        push('/auth/login')
+      } else {
+        setIsLoading(false)
+        toast.error('Register failed!, please try again later')
+      }
+    } catch (error) {
       setIsLoading(false)
-      push('/auth/login')
-    } else {
-      setIsLoading(false)
-      setError('Email already exists!')
+      toast.error('Email already exists!')
     }
   }
 
   return (
-    <AuthLayout error={error} link="/auth/login" linkText="Already have an account?" linkTitle="Sign In" title="Sign Up" alertOnClick={() => setError('')}>
+    <AuthLayout link="/auth/login" linkText="Already have an account?" linkTitle="Sign In" title="Sign Up">
       <form onSubmit={handleSubmit} className="space-y-5">
         <Input className="input input-bordered" labelFor="fullname" labelName="Name" name="fullname" id="fullname" type="text" />
         <Input className="input input-bordered" labelFor="email" labelName="Email" name="email" id="email" type="email" autoComplete="on" />

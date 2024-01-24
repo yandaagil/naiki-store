@@ -4,15 +4,18 @@ import { useEffect, useState } from 'react'
 import ModalUpdateUser from './modalUpdateUser'
 import { Pencil, Trash } from 'lucide-react'
 import ModalDeleteUser from './modalDeleteUser'
+import { User } from '@/types/user.type'
+import { useSession } from 'next-auth/react'
 
 type AdminUsersViewProps = {
-  users: any
+  users: User[]
 }
 
 const AdminUsersView = ({ users }: AdminUsersViewProps) => {
-  const [updatedUser, setupdatedUser] = useState<any>({})
-  const [deletedUser, setDeletedUser] = useState<any>({})
-  const [usersData, setUsersData] = useState([])
+  const [updatedUser, setUpdatedUser] = useState<User | {}>({})
+  const [deletedUser, setDeletedUser] = useState<User | {}>({})
+  const [usersData, setUsersData] = useState<User[]>([])
+  const session: any = useSession()
 
   useEffect(() => {
     setUsersData(users)
@@ -23,7 +26,7 @@ const AdminUsersView = ({ users }: AdminUsersViewProps) => {
 
     if (editModal) {
       editModal.showModal();
-      setupdatedUser(user);
+      setUpdatedUser(user);
     }
   }
 
@@ -52,7 +55,7 @@ const AdminUsersView = ({ users }: AdminUsersViewProps) => {
               </tr>
             </thead>
             <tbody>
-              {usersData.map((user: any, index: number) =>
+              {usersData.map((user: User, index: number) =>
                 <tr key={index}>
                   <th>{index + 1}</th>
                   <td>{user.fullname}</td>
@@ -72,8 +75,8 @@ const AdminUsersView = ({ users }: AdminUsersViewProps) => {
           </table>
         </div>
       </AdminLayout>
-      <ModalUpdateUser id="edit" updatedUser={updatedUser} setUsersData={setUsersData} />
-      <ModalDeleteUser id="delete" deletedUser={deletedUser} setUsersData={setUsersData} />
+      <ModalUpdateUser id="edit" updatedUser={updatedUser} setUsersData={setUsersData} session={session} />
+      <ModalDeleteUser id="delete" deletedUser={deletedUser} setUsersData={setUsersData} session={session} />
     </>
   )
 }

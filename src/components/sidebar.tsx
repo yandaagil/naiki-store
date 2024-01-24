@@ -22,7 +22,7 @@ const Sidebar = ({ title, lists }: SidebarProps) => {
       <div>
         <h2 className="mb-3 px-4 py-2 font-bold text-lg text-center">{`${title} Panel`}</h2>
         {lists.map((list, index) => (
-          <li key={index} className={`${pathname === list.url && 'btn-active rounded-lg'}`}>
+          <li key={index} className={`${pathname === list.url && 'btn-active btn-neutral rounded-lg'}`}>
             <Link href={list.url}>
               {list.icon}
               {list.title}
@@ -34,7 +34,7 @@ const Sidebar = ({ title, lists }: SidebarProps) => {
         <Link href='/'>
           <Button type='button' className='btn-neutral btn-block'>
             <ArrowLeft size={16} />
-            Back to Home
+            Home
           </Button>
         </Link>
         <Button type='button' className='btn-sm btn-outline btn-error btn-block' onClick={() => signOut()}>

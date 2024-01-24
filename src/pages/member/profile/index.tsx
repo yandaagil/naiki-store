@@ -1,10 +1,11 @@
 import MemberProfileView from '@/components/views/member/profile'
 import userServices from '@/services/user'
+import { User } from '@/types/user.type'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
 const MemberProfilePage = () => {
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useState<User | {}>({})
   const session: any = useSession()
 
   useEffect(() => {

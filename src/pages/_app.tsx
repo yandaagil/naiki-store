@@ -1,4 +1,5 @@
 import Navbar from '@/components/navbar'
+import { Toaster } from 'sonner'
 import '@/styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
       <div className={inter.className}>
         {!disableNavbar.includes(pathname.split('/')[1]) && <Navbar />}
         <Component {...pageProps} />
+        <Toaster position="top-center" richColors />
       </div>
     </SessionProvider>
   )

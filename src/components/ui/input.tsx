@@ -8,9 +8,10 @@ type InputProps = {
   autoComplete?: string
   defaultValue?: string
   disabled?: boolean
+  placeholder?: string
 }
 
-const Input = ({ labelFor, labelName, name, id, type, className, autoComplete, defaultValue, disabled }: InputProps) => {
+const Input = ({ labelFor, labelName, name, id, type, className, autoComplete, defaultValue, disabled, placeholder }: InputProps) => {
   return (
     <div className="flex flex-col space-y-2">
       <label htmlFor={labelFor}>{labelName}</label>
@@ -21,7 +22,9 @@ const Input = ({ labelFor, labelName, name, id, type, className, autoComplete, d
         className={`w-full ${className}`}
         autoComplete={autoComplete}
         defaultValue={defaultValue}
-        disabled={disabled} />
+        disabled={disabled}
+        placeholder={placeholder}
+      />
     </div>
   )
 }

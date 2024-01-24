@@ -4,16 +4,15 @@ import Input from "@/components/ui/input"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/router"
 import { FormEvent, useState } from "react"
+import { toast } from "sonner"
 
 const Login = () => {
   const { push, query } = useRouter()
-  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const callbackUrl: any = query.callbackUrl || '/'
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setError('')
     setIsLoading(true)
     const form = e.target as HTMLFormElement
 
@@ -29,18 +28,19 @@ const Login = () => {
         setIsLoading(false)
         form.reset()
         push(callbackUrl)
+        toast.success('Login success!')
       } else {
         setIsLoading(false)
-        setError('Email or password is incorrect!')
+        toast.error('Email or password is incorrect!')
       }
     } catch (error) {
       setIsLoading(false)
-      setError('Email or password is incorrect!')
+      toast.error('Login failed!, please try again later')
     }
   }
 
   return (
-    <AuthLayout error={error} link="/auth/register" title="Sign In" linkText="Don't have an account? " linkTitle="Sign Up" alertOnClick={() => setError('')}>
+    <AuthLayout link="/auth/register" title="Sign In" linkText="Don't have an account? " linkTitle="Sign Up">
       <form onSubmit={handleSubmit} className="space-y-5">
         <Input className="input input-bordered" labelFor="email" labelName="Email" name="email" id="email" type="email" autoComplete="on" />
         <Input className="input input-bordered" labelFor="password" labelName="Password" name="password" id="password" type="password" />

@@ -3,11 +3,18 @@ import Input from '@/components/ui/input'
 import Modal from '@/components/ui/modal'
 import Select from '@/components/ui/select'
 import userServices from '@/services/user'
-import { useSession } from 'next-auth/react'
-import { FormEvent, useState } from 'react'
+import { User } from '@/types/user.type'
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import { toast } from 'sonner'
 
-const ModalUpdateUser = ({ id, updatedUser, setUsersData }: any) => {
-  const session: any = useSession()
+type PropTypes = {
+  id: string
+  updatedUser: User | any
+  setUsersData: Dispatch<SetStateAction<User[]>>
+  session: any
+}
+
+const ModalUpdateUser = ({ id, updatedUser, setUsersData, session }: PropTypes) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleUpdateUser = async (e: FormEvent<HTMLFormElement>) => {
@@ -26,12 +33,11 @@ const ModalUpdateUser = ({ id, updatedUser, setUsersData }: any) => {
       const { data } = await userServices.getAllUsers()
       setUsersData(data.data)
       const editModal = document.getElementById('edit') as HTMLDialogElement;
-
-      if (editModal) {
-        editModal.close();
-      }
+      if (editModal) editModal.close();
+      toast.success('User has been updated')
     } else {
       setIsLoading(false)
+      toast.error('Failed to update user')
     }
   }
   return (
