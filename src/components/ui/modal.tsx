@@ -15,6 +15,9 @@ const Modal = ({ id, title, children }: ModalProps) => {
           <h3 className="font-bold text-lg mb-6">{title}</h3>
           {children}
         </div>
+        <form method="dialog" className="modal-backdrop">
+          <button className="cursor-default">close</button>
+        </form>
       </dialog>
     </>
   )

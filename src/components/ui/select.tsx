@@ -20,11 +20,14 @@ const Select = ({ labelFor, labelName, name, id, className, defaultValue, option
         name={name}
         id={id}
         className={`select select-bordered w-full ${className}`}
-        defaultValue={defaultValue}
         disabled={disabled}
       >
         {options.map((option, index) =>
-          <option key={index} value={option.value}>{option.label}</option>
+          defaultValue === option.value ? (
+            <option key={index} value={option.value} selected>{option.label}</option>
+          ) : (
+            <option key={index} value={option.value}>{option.label}</option>
+          )
         )}
       </select>
     </div>

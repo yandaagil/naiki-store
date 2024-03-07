@@ -40,11 +40,31 @@ const ModalUpdateUser = ({ id, updatedUser, setUsersData, session }: PropTypes) 
       toast.error('Failed to update user')
     }
   }
+
   return (
     <Modal id={id} title="Update User">
       <form className="space-y-3" onSubmit={handleUpdateUser}>
-        <Input className='input input-bordered' type='text' id='fullname' labelFor='fullname' labelName='Fullname' name='fullname' defaultValue={updatedUser.fullname} disabled />
-        <Input className='input input-bordered' type='text' id='email' labelFor='email' labelName='Email' name='email' defaultValue={updatedUser.email} disabled />
+        <Input
+          className='input input-bordered'
+          type='text'
+          id='fullname'
+          labelFor='fullname'
+          labelName='Fullname'
+          name='fullname'
+          defaultValue={updatedUser.fullname}
+          disabled
+        />
+        <Input
+          className='input input-bordered'
+          type='text'
+          id='email'
+          labelFor='email'
+          labelName='Email'
+          name='email'
+          defaultValue={updatedUser.email}
+          disabled
+          autoComplete='off'
+        />
         <Select
           labelFor='role'
           labelName='Role'
@@ -54,7 +74,8 @@ const ModalUpdateUser = ({ id, updatedUser, setUsersData, session }: PropTypes) 
           options={[
             { value: 'admin', label: 'Admin' },
             { value: 'member', label: 'Member' }
-          ]} />
+          ]}
+        />
         {isLoading ? (
           <Button className="btn btn-disabled btn-block">
             <span className="loading loading-spinner"></span>

@@ -5,21 +5,21 @@ const Navbar = () => {
   const { data } = useSession()
 
   return (
-    <>
-      <button className="btn btn-primary" onClick={() => data ? signOut() : signIn()}>
-        {data ? 'Log Out' : 'Login'}
-      </button>
-      <button className="ml-3 btn btn-primary">
+    <nav className='text-center p-2 sticky top-0 bg-white z-10'>
+      <button className="font-semibold p-3 border-b-2 border-transparent hover:border-b-2 hover:border-black">
         <Link href='/admin'>
           Admin
         </Link>
       </button>
-      <button className="ml-3 btn btn-primary">
+      <button className="font-semibold p-3 border-b-2 border-transparent hover:border-b-2 hover:border-black">
         <Link href='/member'>
           Member
         </Link>
       </button>
-    </>
+      <button className="font-semibold p-3 border-b-2 border-transparent hover:border-b-2 hover:border-black" onClick={() => data ? signOut() : signIn()}>
+        {data ? 'Log Out' : 'Login'}
+      </button>
+    </nav>
   )
 }
 

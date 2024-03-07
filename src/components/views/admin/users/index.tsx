@@ -23,7 +23,6 @@ const AdminUsersView = ({ users }: AdminUsersViewProps) => {
 
   const handleEditModal = (user: any) => {
     const editModal = document.getElementById('edit') as HTMLDialogElement;
-
     if (editModal) {
       editModal.showModal();
       setUpdatedUser(user);
@@ -32,7 +31,6 @@ const AdminUsersView = ({ users }: AdminUsersViewProps) => {
 
   const handleDeleteModal = (user: any) => {
     const deleteModal = document.getElementById('delete') as HTMLDialogElement;
-
     if (deleteModal) {
       deleteModal.showModal();
       setDeletedUser(user);

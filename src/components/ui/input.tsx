@@ -6,12 +6,13 @@ type InputProps = {
   type: string
   className?: string
   autoComplete?: string
-  defaultValue?: string
+  defaultValue?: string | number
   disabled?: boolean
   placeholder?: string
+  onChange?: (e: any) => void
 }
 
-const Input = ({ labelFor, labelName, name, id, type, className, autoComplete, defaultValue, disabled, placeholder }: InputProps) => {
+const Input = ({ labelFor, labelName, name, id, type, className, autoComplete, defaultValue, disabled, placeholder, onChange }: InputProps) => {
   return (
     <div className="flex flex-col space-y-2">
       <label htmlFor={labelFor}>{labelName}</label>
@@ -24,6 +25,7 @@ const Input = ({ labelFor, labelName, name, id, type, className, autoComplete, d
         defaultValue={defaultValue}
         disabled={disabled}
         placeholder={placeholder}
+        onChange={onChange}
       />
     </div>
   )

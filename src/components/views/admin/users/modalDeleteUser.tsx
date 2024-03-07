@@ -34,12 +34,41 @@ const ModalDeleteUser = ({ id, deletedUser, setUsersData, session }: PropTypes) 
       toast.error('Failed to delete user')
     }
   }
+
   return (
     <Modal id={id} title="Delete User">
       <form className="space-y-3" onSubmit={handleDeleteUser}>
-        <Input className='input input-bordered' type='text' id='fullname' labelFor='fullname' labelName='Fullname' name='fullname' defaultValue={deletedUser.fullname} disabled />
-        <Input className='input input-bordered' type='text' id='email' labelFor='email' labelName='Email' name='email' defaultValue={deletedUser.email} disabled />
-        <Input className='input input-bordered' type='text' id='role' labelFor='role' labelName='Role' name='role' defaultValue={deletedUser.role} disabled />
+        <Input
+          className='input input-bordered'
+          type='text'
+          id='fullname'
+          labelFor='fullname'
+          labelName='Fullname'
+          name='fullname'
+          defaultValue={deletedUser.fullname}
+          disabled
+        />
+        <Input
+          className='input input-bordered'
+          type='text'
+          id='email'
+          labelFor='email'
+          labelName='Email'
+          name='email'
+          defaultValue={deletedUser.email}
+          disabled
+          autoComplete='off'
+        />
+        <Input
+          className='input input-bordered'
+          type='text'
+          id='role'
+          labelFor='role'
+          labelName='Role'
+          name='role'
+          defaultValue={deletedUser.role}
+          disabled
+        />
         {isLoading ? (
           <Button className="btn btn-disabled btn-block">
             <span className="loading loading-spinner"></span>
